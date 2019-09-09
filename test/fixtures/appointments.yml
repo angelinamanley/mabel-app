@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service_type: MyString
+  review_content: MyString
+  pet: one
+  service_provider: one
+  date: 2019-09-09 09:46:17
+  duration: 1
+  cost: 9.99
+  review_score: 1
+
+two:
+  service_type: MyString
+  review_content: MyString
+  pet: two
+  service_provider: two
+  date: 2019-09-09 09:46:17
+  duration: 1
+  cost: 9.99
+  review_score: 1
