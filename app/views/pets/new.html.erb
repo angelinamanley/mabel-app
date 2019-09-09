@@ -1,0 +1,21 @@
+<%= form_for @pet do |f| %>
+<%= f.hidden_field :owner_id, value owner.id %>
+<%= f.label :name %>
+<%= f.text_field :name %><br>
+<%= f.label "Species:" %>
+<%= f.collection_select :species_id, Species.all, :id, :name %><br>
+<%= f.label :breed %>
+<%= f.text_field :breed %><br>
+<%= f.label "Date of Birth" %>
+<%= f.date_field :dob %><br>
+<%= f.label :gender_male, "Male" %>
+<%= f.radio_button :gender, 'male' %>
+<%= f.label :gender_female, "Female" %>
+<%= f.radio_button :gender, 'female' %><br>
+<%= f.label :bio %>
+<%= f.text_area :bio %><br>
+<%= f.label :pic_url %>
+<%= f.text_field :pic_url %><br>
+
+<%= f.submit "Submit Pet" %>
+<% end %>
