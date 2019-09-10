@@ -1,6 +1,9 @@
+Book an Appointment with <%= @service_provider["company_name"] %>
 <%= form_for @appointment do |f| %>
 <%= f.hidden_field :service_provider_id, value: session[:service_provider_id] %>
-<%= f.collection_select :pet_id, @current_owner.pets, :id, :name %>
-<%= f.collection_select :service_type, @service_provider, :to_s, :to_s %>
-  
+Who's the appointment for? <%= f.collection_select :pet_id, @current_owner.pets, :id, :name %><br>
+What's the appointment for?<%= f.collection_select :service_type, @service_provider["service_types"], :to_s, :to_s %><br>
+When is the appointment for?<%= f.datetime_field :date %><br>
+How long is the appointment for? <%= f.number_field :duration %> hours<br>
+<%= f.submit %>
 <% end %>
