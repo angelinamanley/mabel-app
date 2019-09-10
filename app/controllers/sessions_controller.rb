@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
   
     def destroy
       session.delete(:owner_id)
-      redirect_back(fallback_location: login_path)
+      redirect_to welcome_path
+    #   redirect_back(fallback_location: login_path)
     end
   end
