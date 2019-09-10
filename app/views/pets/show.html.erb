@@ -1,1 +1,9 @@
-<h1>Show Pet</h1>
+<h1><%= @pet.name %></h1>
+<h2><%= @pet.owner.name %></h2>
+<h2><%= @pet.breed  %></h2>
+<h2><%= @pet.species_id %></h2>
+<h2><%= @pet.dob %></h2>
+<h2><%= @pet.gender %></h2>
+<h2><%= @pet.bio %></h2>
+<img src="<%=@pet.pic_url %>">
+
