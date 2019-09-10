@@ -1,7 +1,5 @@
 class OwnersController < ApplicationController
-    has_secure_password 
-
-     validates :email, presence: true, uniqueness: true 
+     
 
     def new 
         @owner = Owner.new
@@ -9,6 +7,7 @@ class OwnersController < ApplicationController
 
     def create 
         owner = Owner.create(owner_params)
+        session[:owner_id] = owner.id
         redirect_to owner_path(owner)
     end
 
