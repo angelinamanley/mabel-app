@@ -1,10 +1,32 @@
 <h1><%= @pet.name %></h1></br>
+<img src="<%=@pet.pic_url %>" width="300"></br>
 <h2>Owner: <%= @pet.owner.name %></h2></br>
 <h2>Breed: <%= @pet.breed  %></h2></br>
 <h2>Species: <%= @pet.species.name%></h2></br>
 <h2>Date of Birth: <%= @pet.dob %></h2></br>
 <h2>Gender: <%= @pet.gender %></h2></br>
 <h2>Bio: <%= @pet.bio %></h2></br>
-<img src="<%=@pet.pic_url %>"></br>
+
+Upcoming Appointments <br>
+<% if @pet.upcoming_appointments == []%>
+<%= "#{@pet.name} has no upcoming appointments" %>
+<% else  %>
+<% @pet.upcoming_appointments.each do |appt| %>
+<%= "Appointment with #{appt.service_provider.company_name} on #{appt.date}" %> <br>
+<button> <%= link_to "View Appointment", appointment_path(appt) %></button> <br>
+<% end %>
+<% end %>
+<br>
+Past Appointments <br>
+<% if @pet.past_appointments == []%>
+<%= "#{@pet.name} has no past appointments" %>
+<% else  %>
+<% @pet.past_appointments.each do |appt| %>
+<%= "Appointment with #{appt.service_provider.company_name} on #{appt.date}" %> <br>
+<button> <%= link_to "View Appointment", appointment_path(appt) %></button> <br>
+<% end %>
+<% end %>
+<br>
+
 <button><%= link_to "Edit " + @pet.name, edit_pet_path(@pet) %> </button></br>
 <%= link_to 'Remove Pet', @pet, { method: 'delete', data: {confirm: 'Are you sure?'} } %>

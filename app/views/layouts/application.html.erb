@@ -12,6 +12,7 @@
   <body>
   <nav>
     <%= link_to 'Pets', pets_path %>
+     <%= link_to 'Find a Service Provider', service_providers_path %>
 <% if logged_in? %>
     <%= link_to "Dashboard", owner_path(@current_owner)%>
     <%= link_to 'Logout', logout_path %>

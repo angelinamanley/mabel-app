@@ -19,8 +19,12 @@ class ServiceProvider < ApplicationRecord
 
     def average_rating 
         scores = []
-        self.appointments.each {|appt| scores << appt.review_score}
-        scores.sum/scores.count
+        if self.appointments.map {|appt| appt.review_score}.count == 0
+            return 0 
+        else 
+            self.appointments.each {|appt| scores << appt.review_score}
+            scores.sum/scores.count
+        end 
     end
 
 

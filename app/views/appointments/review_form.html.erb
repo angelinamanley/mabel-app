@@ -1,0 +1,11 @@
+
+Leave a review for <%= @appointment.service_provider.company_name %>
+
+<%= form_tag create_review_path, method: "patch" do %>
+<%= hidden_field_tag :appointment_id, @appointment.id %>
+<%= label_tag :review_score %>
+<%= text_field_tag :review_score %>
+<%= label_tag :review_content %>
+<%= text_area_tag :review_content %>
+<%= submit_tag "Leave a Review" %>
+<% end %> 
