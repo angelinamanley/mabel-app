@@ -32,7 +32,7 @@ class PetsController < ApplicationController
     def destroy
         @pet = Pet.find(params[:id])
         @pet.destroy
-    redirect_to owner_path(session[:owner_id])
+    redirect_to owner_path(@current_user)
     end
 
 private 

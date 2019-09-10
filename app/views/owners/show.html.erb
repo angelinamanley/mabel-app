@@ -1,12 +1,9 @@
-<h1>Show Owner</h1>
-
+<h1>Dashboard</h1>
 <h1><%= @owner.name %></h1>
 <h2><%= @owner.location %></h2>
-
 <br>
-<h1>Pets</h1> 
+<h1>Pets</h1>
 <% @owner.pets.each do |pet| %>
 <h2><%= link_to pet.name, pet_path(pet) %></h2>
+<img src="<%= pet.pic_url %>" width="300">
 <% end %>
-
-<%= link_to "Add Pet", new_pet_path %> 

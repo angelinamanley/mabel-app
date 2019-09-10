@@ -1,5 +1,11 @@
 <h1>All Service Providers</h1>
 
+<%= form_tag(service_providers_path, method: :get) do %>
+<%= select_tag :search, options_from_collection_for_select(@service_types, :to_s, :to_s) %>
+<%= submit_tag ("Search") %>
+<% end %>
+
+
 <% @service_providers.each do |provider| %>
 <%= link_to provider.company_name, service_provider_path(provider) %> <br>
 <% end %>
