@@ -9,5 +9,11 @@ class AppointmentsController < ApplicationController
         @appointments = Appointment.all
     end
 
+    def new 
+        @appointment = Appointment.new
+        @service_provider = session[:service_provider]
+        byebug
+    end
+
 
 end

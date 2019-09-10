@@ -1,0 +1,6 @@
+<%= form_for @appointment do |f| %>
+<%= f.hidden_field :service_provider_id, value: session[:service_provider_id] %>
+<%= f.collection_select :pet_id, @current_owner.pets, :id, :name %>
+<%= f.collection_select :service_type, @service_provider, :to_s, :to_s %>
+  
+<% end %>

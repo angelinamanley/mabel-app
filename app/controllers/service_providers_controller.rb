@@ -2,7 +2,8 @@ class ServiceProvidersController < ApplicationController
 
     def show
         @service_provider = ServiceProvider.find(params[:id])
-
+        session[:service_provider_id] = @service_provider.id
+        session[:service_provider] = @service_provider
     end
 
     def index
