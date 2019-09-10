@@ -10,6 +10,16 @@
   </head>
 
   <body>
+  <nav>
+    <%= link_to 'Pets', pets_path %>
+
+    <%= link_to "Dashboard", owner_path(@current_owner)%>
+
+
+
+
+    
+  </nav>
     <%= yield %>
   </body>
 </html>

@@ -15,16 +15,29 @@ class PetsController < ApplicationController
 
     def create 
         pet = Pet.create(pet_params)
+        byebug
         redirect_to pet_path(pet)
     end
 
     def edit 
+        @pet = Pet.find(params[:id])
+    end
 
+    def update
+        @pet = Pet.find(params[:id])
+        @pet.update(pet_params)
+    redirect_to @pet
+    end
+
+    def destroy
+        @pet = Pet.find(params[:id])
+        @pet.destroy
+    redirect_to owner_path(session[:owner_id])
     end
 
 private 
 
-    def pet_params(*args)
-        params.require(:pet).permit(:name, :owner_id, :species, :breed, :dob, :gender, :bio, :pic_url)
+    def pet_params
+        params.require(:pet).permit(:name, :owner_id, :species_id, :breed, :dob, :gender, :bio, :pic_url)
     end
 end
