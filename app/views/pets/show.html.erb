@@ -1,12 +1,13 @@
 <h1><%= @pet.name %></h1></br>
 <img src="<%=@pet.pic_url %>" width="300"></br>
-<h2>Owner: <%= @pet.owner.name %></h2></br>
+<h2>Owner: <%= link_to @pet.owner.name, owner_path(@pet.owner_id) %></h2></br>
 <h2>Breed: <%= @pet.breed  %></h2></br>
 <h2>Species: <%= @pet.species.name%></h2></br>
 <h2>Date of Birth: <%= @pet.dob %></h2></br>
 <h2>Gender: <%= @pet.gender %></h2></br>
 <h2>Bio: <%= @pet.bio %></h2></br>
 
+<% if @pet.owner_id == session[:owner_id] %>
 Upcoming Appointments <br>
 <% if @pet.upcoming_appointments == []%>
 <%= "#{@pet.name} has no upcoming appointments" %>
@@ -30,3 +31,4 @@ Past Appointments <br>
 
 <button><%= link_to "Edit " + @pet.name, edit_pet_path(@pet) %> </button></br>
 <%= link_to 'Remove Pet', @pet, { method: 'delete', data: {confirm: 'Are you sure?'} } %>
+<% end %>

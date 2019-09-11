@@ -8,5 +8,7 @@
 <img src="<%= pet.pic_url %>" width="300">
 <% end %>
 <br>
+<% if @owner.id == session[:owner_id] %>
 <%= link_to "Add a Pet", new_pet_path %>
 <%= link_to 'Delete Account', @owner, { method: 'delete', data: {confirm: 'Are you sure?'} } %>
+<% end %>
