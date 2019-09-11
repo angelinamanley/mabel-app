@@ -15,9 +15,13 @@ class PetsController < ApplicationController
 
     def create 
         pet = Pet.create(pet_params)
-        byebug
+        if pet.valid?
         redirect_to pet_path(pet)
+        else
+            flash[:errors] = pet.errors.full_messages
+            redirect_to new_pet_path
     end
+end
 
     def edit 
         @pet = Pet.find(params[:id])

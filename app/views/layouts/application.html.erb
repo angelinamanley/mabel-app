@@ -20,12 +20,22 @@
   <%= link_to "Signup", signup_path %>
   <%= link_to 'Login', login_path %>
   <% end %>
-
-
-
-
-    
   </nav>
+  <% if flash[:errors] %>
+   <ul class=“errors”>
+     <h2>Woof!! Something's wrong!</h2>
+     <% flash[:errors].each do |error| %>
+       <li><%= error %></li>
+     <% end %>
+   </ul>
+ <% end %>
+ <% if flash[:notices] %>
+   <ul class=“notices”>
+     <% flash[:notices].each do |notice| %>
+       <li><%= notice %></li>
+     <% end %>
+   </ul>
+ <% end %>
     <%= yield %>
   </body>
 </html>
