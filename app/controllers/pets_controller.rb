@@ -10,7 +10,11 @@ class PetsController < ApplicationController
     end
 
     def index
-        @pets = Pet.all
+        if params[:search]
+            @pets = Pet.search(params[:search].to_i) 
+        else 
+            @pets = Pet.all 
+        end 
     end
 
     def new 

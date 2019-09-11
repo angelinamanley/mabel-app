@@ -1,3 +1,12 @@
+
+
+<%= form_tag(pets_path, method: :get) do %>
+<%= select_tag :species_id, options_from_collection_for_select(Species.all, :id, :name) %>
+<%= submit_tag ("Search") %>
+<% end %>
+
+
+
 <h1>All Pets</h1>
 <ul><% @pets.each do |pet| %>
   <li><%= link_to pet.name, pet_path(pet) %></li>

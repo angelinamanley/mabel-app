@@ -15,6 +15,15 @@ class Pet < ApplicationRecord
     self.appointments.select {|appt| appt.date < DateTime.now}
   end
 
+  def self.search(search) 
+    if search
+        Pet.all.select {|pet| pet.species_id == search}
+    else   
+        Pet.all
+    end 
+end
+
+
   def upcoming_appointments 
     self.appointments.select {|appt| appt.date > DateTime.now}
   end

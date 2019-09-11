@@ -41,3 +41,6 @@
 # Appointment.create(pet_id: 6, service_provider_id: 14, service_type: "training", date: Date.new(2019, 10, 15), duration: 1, cost: 40, review_score: 0, review_content: "")
 # Appointment.create(pet_id: 7, service_provider_id: 15, service_type: "grooming", date: Date.new(2019, 10, 15), duration: 2, cost: 100, review_score: 0, review_content: "")
 # Appointment.create(pet_id: 8, service_provider_id: 15, service_type: "sitting", date: Date.new(2019, 11, 16), duration: 48, cost: 2400, review_score: 0, review_content: "")
+
+
+# ServiceProvider.create(company_name:"ABC Pets", location: "Islington", service_types:["sitting", "walking"], rating: 0, bio: "Islington's finest dog walking and sitting service provider.", rates: 20, email: "abcpets@gmail.com", password_digest: "testing123")

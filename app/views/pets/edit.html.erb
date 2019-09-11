@@ -9,9 +9,9 @@
 <%= f.label "Date of Birth" %>
 <%= f.date_field :dob %><br>
 <%= f.label :gender_male, "Male" %>
-<%= f.radio_button :gender, 'male' %>
+<%= f.radio_button :gender, 'male', :checked => @pet.gender == "male" %>
 <%= f.label :gender_female, "Female" %>
-<%= f.radio_button :gender, 'female' %><br>
+<%= f.radio_button :gender, 'female', :checked => @pet.gender == "female"%><br>
 <%= f.label :bio %>
 <%= f.text_area :bio %><br>
 <%= f.label :pic_url %>
