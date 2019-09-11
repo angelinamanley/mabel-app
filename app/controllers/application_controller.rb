@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
     helper_method :logged_in?
 
     def set_current_owner
+        # reset_session
         @current_owner = session[:owner_id] ? Owner.find(session[:owner_id]) : nil
     end
 

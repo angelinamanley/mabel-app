@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: :login
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: :logout
+  get '/owners/:id', to: 'owners#destroy_session_account', as: :destroy_account
+
 
 
   get "/review_form/:id", to: "appointments#review_form", as: "review_form"

@@ -18,4 +18,5 @@ class SessionsController < ApplicationController
       redirect_to welcome_path
     #   redirect_back(fallback_location: login_path)
     end
+
   end

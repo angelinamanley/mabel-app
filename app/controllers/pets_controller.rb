@@ -1,4 +1,8 @@
 class PetsController < ApplicationController
+    before_action :auth_pet_owner 
+    skip_before_action :auth_pet_owner, only: [:new, :index, :show]
+
+
 
     def show
         @pet = Pet.find(params[:id])
@@ -20,8 +24,8 @@ class PetsController < ApplicationController
         else
             flash[:errors] = pet.errors.full_messages
             redirect_to new_pet_path
+        end
     end
-end
 
     def edit 
         @pet = Pet.find(params[:id])
@@ -44,4 +48,10 @@ private
     def pet_params
         params.require(:pet).permit(:name, :owner_id, :species_id, :breed, :dob, :gender, :bio, :pic_url)
     end
+
+    def auth_pet_owner
+        pet = Pet.find(params[:id].to_i)
+        return head(:forbidden) unless pet.owner.id == session[:owner_id] 
+    end 
+    
 end
