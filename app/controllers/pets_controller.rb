@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
     before_action :auth_pet_owner 
-    skip_before_action :auth_pet_owner, only: [:new, :index, :show]
+    skip_before_action :auth_pet_owner, only: [:new, :index, :show, :create]
 
 
 
@@ -39,8 +39,11 @@ class PetsController < ApplicationController
 
     def destroy
         @pet = Pet.find(params[:id])
-        @pet.destroy
-    redirect_to owner_path(@current_user)
+        if @pet.appointments.count > 0 
+            flash[:errors] = "Please cancel #{@pet.name}'s appointment(s) before removing them."
+         else @pet.destroy
+        redirect_to owner_path(@current_user)
+        end
     end
 
 private 
@@ -51,7 +54,7 @@ private
 
     def auth_pet_owner
         pet = Pet.find(params[:id].to_i)
-        return head(:forbidden) unless pet.owner.id == session[:owner_id] 
+        redirect_to "/403" unless pet.owner.id == session[:owner_id] 
     end 
     
 end

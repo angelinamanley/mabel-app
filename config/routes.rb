@@ -20,4 +20,10 @@ Rails.application.routes.draw do
   get "/review_form/:id", to: "appointments#review_form", as: "review_form"
   patch "/create_review", to: "appointments#create_review", as: "create_review"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # error pages
+  %w( 403 500 ).each do |code|
+    get code, :to => "errors#show", :code => code
+  end
+
 end

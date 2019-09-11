@@ -1,6 +1,6 @@
 class OwnersController < ApplicationController
      before_action :auth_pet_owner 
-     skip_before_action :auth_pet_owner, only: [:new, :index, :show]
+     skip_before_action :auth_pet_owner, only: [:new, :index, :show, :create]
 
     def new 
         @owner = Owner.new

@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
 
     before_action :auth_pet_owner
-    skip_before_action :auth_pet_owner, only: [:new]
+    skip_before_action :auth_pet_owner, only: [:new, :create]
 
 
     def show

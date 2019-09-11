@@ -12,7 +12,8 @@ Average Rating: <%= @service_provider.average_rating %> <br>
 
 Bio: <%= @service_provider.bio %> <br>
 
-Rates: £ <%= @service_provider.rates %> <br>
+Rates: £ <%= number_with_precision(@service_provider.rates, precision: 2) %> <br>
+
 
 Email: <%= @service_provider.email %> <br>
 
