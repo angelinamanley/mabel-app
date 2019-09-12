@@ -1,5 +1,6 @@
 <% if @owner.id == session[:owner_id] %>
-<h1>Welcome Back, <%= @owner.name %>! </h1>
+<h1>Welcome to your Dashboard, <%= @owner.name %>! </h1>
+<a href="<%= new_pet_path %>" class="btn btn-primary">Add New Pet</a>
 <h1>Here are your pets:</h1>
 <% else %>
 <h1><%= @owner.name %>'s Pets</h2> 
@@ -7,44 +8,40 @@
 
 <br>
 <div class="row">
-
 <div class="card-deck" style="float: left;">
 <% @owner.pets.each do |pet| %>
+<div class="col-md-4">
 <div class="card" style="width: 22rem; margin: 5px;">
-<img class="card-img-top" src="<%= pet.pic_url %>" alt="Pet Image" width="150" height="150">
+<img class="card-img-top" src="<%= pet.pic_url %>" alt="Pet Image">
   <div class="card-body">
     <h5 class="card-title"><%= pet.name %></h5>
     <h6 class="card-subtitle mb-2 text-muted"><%= pet.species.name %></h6>
     <p class="card-text" style="margin-bottom: 50px;"><%= pet.breed %></p>
-    <a href="<%= pet_path(pet) %>" class="btn btn-primary" style="position: absolute; bottom: 10px;">View Profile</a>
+    <a href="<%= pet_path(pet) %>" class="btn btn-primary" style="position: absolute; bottom: 50px;">View Profile</a>
+  </div>
   </div>
   </div>
    <% end %>
   </div>
-  <div>
-
-
-
-
-
+  
+<div class="container">
 <% if @owner.id == session[:owner_id] %>
 <h2>Here are your upcoming appointment(s):</h2>
-<% if @owner.pets.map {|pet| pet.upcoming_appointments} == []%>
+<% if @owner.pets.map {|pet| pet.upcoming_appointments}.flatten == []%>
+<div class="row">
 <%= "You have no upcoming appointments" %>
+</div>
 <% else  %>
 <% @owner.pets.each do |pet| %>
     <% pet.upcoming_appointments.each do |appt| %>
+    <div class="row">
 <%= "#{pet.name} has an appointment with #{appt.service_provider.company_name} on #{appt.date}" %> <br>
-<button> <%= link_to "View", appointment_path(appt) %></button> <br>
+<a href="<%= appointment_path(appt) %>" class="btn btn-primary">View</a>
+    </div>  
     <% end %>
     <% end %>
     <% end %>
 <br>
-
-
-
-
-
-<%= link_to "Add a Pet", new_pet_path %>
+</div>
 <%= link_to 'Delete Account', @owner, { method: 'delete', data: {confirm: 'Are you sure?'} } %>
 <% end %>

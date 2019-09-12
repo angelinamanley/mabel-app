@@ -43,9 +43,12 @@ class PetsController < ApplicationController
 
     def destroy
         @pet = Pet.find(params[:id])
-        if @pet.appointments.count > 0 
-            flash[:errors] = "Please cancel #{@pet.name}'s appointment(s) before removing them."
-         else @pet.destroy
+        if !@pet.upcoming_appointments.empty?
+            flash[:errors] = ["Please cancel #{@pet.name}'s appointment(s) before removing them."]
+            redirect_to pet_path(@pet)
+         else
+            @pet.appointments.destroy_all
+            @pet.destroy
         redirect_to owner_path(@current_owner)
         end
     end

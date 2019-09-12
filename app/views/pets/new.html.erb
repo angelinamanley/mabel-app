@@ -1,21 +1,23 @@
-<%= form_for @pet do |f| %>
+<div class="view" style="background-image: url('https://bushysttvillage.com/wp-content/uploads/2019/09/sam-manns-lBdVjQcfSRQ-unsplash.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+<div class="text-center border border-light bg-light p-5 col-md-4">
+<%= bootstrap_form_for @pet do |f| %>
 <%= f.hidden_field :owner_id, value: session[:owner_id] %>
 <%= f.label :name %>
-<%= f.text_field :name %><br>
+<%= f.text_field :name , hide_label: true %>
 <%= f.label "Species:" %>
-<%= f.collection_select :species_id, Species.all, :id, :name %><br>
+<%= f.collection_select :species_id, Species.all, :id, :name, hide_label: true %><br>
 <%= f.label :breed %>
-<%= f.text_field :breed %><br>
+<%= f.text_field :breed, hide_label: true  %>
 <%= f.label "Date of Birth" %>
-<%= f.date_field :dob %><br>
+<%= f.date_field :dob, hide_label: true  %>
 <%= f.label :gender_male, "Male" %>
-<%= f.radio_button :gender, 'male' %>
+<%= f.radio_button :gender, 'Male', hide_label: true %>
 <%= f.label :gender_female, "Female" %>
-<%= f.radio_button :gender, 'female' %><br>
+<%= f.radio_button :gender, 'Female', hide_label: true %><br>
 <%= f.label :bio %>
-<%= f.text_area :bio %><br>
+<%= f.text_area :bio, hide_label: true  %>
 <%= f.label "Upload a picture of your pet" %>
-<%= f.file_field :pic_url %>
+<%= f.file_field :pic_url, hide_label: true %>
 <br>
-<%= f.submit "Submit Pet" %>
+<%= f.submit "Add New Pet" %>
 <% end %>
