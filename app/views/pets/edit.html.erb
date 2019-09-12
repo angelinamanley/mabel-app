@@ -14,8 +14,8 @@
 <%= f.radio_button :gender, 'female', :checked => @pet.gender == "female"%><br>
 <%= f.label :bio %>
 <%= f.text_area :bio %><br>
-<%= f.label :pic_url %>
-<%= f.text_field :pic_url %><br>
-
+<%= f.label "Upload a picture of your pet" %>
+<%= f.file_field :pic_url %>
+<br>
 <%= f.submit "Update Pet" %>
 <% end %>

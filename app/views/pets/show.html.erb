@@ -1,5 +1,6 @@
 <h1><%= @pet.name %></h1></br>
-<img src="<%=@pet.pic_url %>" width="300"></br>
+<!--<img src="<%=@pet.pic_url %>" width="300"></br>-->
+<%= image_tag(@pet.pic_url_url.to_s) %>
 <h2>Owner: <%= link_to @pet.owner.name, owner_path(@pet.owner_id) %></h2></br>
 <h2>Breed: <%= @pet.breed  %></h2></br>
 <h2>Species: <%= @pet.species.name%></h2></br>

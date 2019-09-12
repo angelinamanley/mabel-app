@@ -46,7 +46,7 @@ class PetsController < ApplicationController
         if @pet.appointments.count > 0 
             flash[:errors] = "Please cancel #{@pet.name}'s appointment(s) before removing them."
          else @pet.destroy
-        redirect_to owner_path(@current_user)
+        redirect_to owner_path(@current_owner)
         end
     end
 
