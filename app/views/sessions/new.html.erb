@@ -1,6 +1,14 @@
-<h1>Log in </h1>
-<%= form_tag login_path do %>
-    Email: <%= text_field_tag :email %> <br>
-    Password: <%= password_field_tag :password %> <br>
-    <%= submit_tag 'log in' %>
+<div class="view" style="background-image: url('https://bushysttvillage.com/wp-content/uploads/2019/09/sam-manns-lBdVjQcfSRQ-unsplash.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+<div class="text-center border border-light bg-light p-5 col-md-4">
+
+    <p class="h4 mb-4">Sign In</p>
+
+<%= bootstrap_form_tag url: '/login' do |f| %>
+    <%# Email: <%= text_field_tag :email %> <br>
+    <%= f.email_field :email, value: 'name@example.com' %>
+    <%# Password: <%= password_field_tag :password %> <br>
+    <%= f.password_field :password %>
+    <%= f.submit "Sign In"%>
 <% end %>
+</div>
+</div>

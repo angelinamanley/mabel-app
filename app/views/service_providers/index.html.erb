@@ -1,11 +1,21 @@
-<h1>All Service Providers</h1>
+<h1>Find a Service Provider</h1>
+<p>What service are you looking for?</p>
 
 <%= form_tag(service_providers_path, method: :get) do %>
 <%= select_tag :search, options_from_collection_for_select(@service_types, :to_s, :to_s) %>
 <%= submit_tag ("Search") %>
 <% end %>
 
-
+<div class="card-columns" style="display: inline-block;">
 <% @service_providers.each do |provider| %>
-<%= link_to provider.company_name, service_provider_path(provider) %> <br>
+<div class="card" style="width: 22rem; margin: 5px;">
+  <div class="card-body">
+    <h5 class="card-title"><%= provider.company_name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= provider.location %></h6>
+    <p class="card-text"><%= provider.bio %></p>
+    <a href="<%= service_provider_path(provider) %>" class="btn btn-primary">View Profile</a>
+  </div>
+</div>
+<%# <%= link_to provider.company_name, service_provider_path(provider) %> <br>
 <% end %>
+</div>

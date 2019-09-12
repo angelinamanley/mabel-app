@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+gem "bootstrap_form"
 
 
 

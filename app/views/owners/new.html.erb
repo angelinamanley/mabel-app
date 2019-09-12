@@ -1,13 +1,18 @@
-<%= form_for @owner do |f| %>
+<div class="view" style="background-image: url('https://bushysttvillage.com/wp-content/uploads/2019/09/sam-manns-lBdVjQcfSRQ-unsplash.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+<div class="text-center border border-light bg-light p-5 col-md-4">
+<p class="h4 mb-4">Sign up</p>
+<%= bootstrap_form_for(@owner) do |f| %>
 <%= f.label :name %>
-<%= f.text_field :name %>
+<%= f.text_field :name, hide_label: true %>
 <%= f.label :email %>
-<%= f.text_field :email %>
+<%= f.text_field :email, hide_label: true %>
 <%= f.label :location %>
-<%= f.text_field :location %>
+<%= f.text_field :location, hide_label: true %>
 <%= f.label :password %>
-<%= f.password_field :password %>
+<%= f.password_field :password, hide_label: true %>
 <%= f.label :password_confirmation %>
-<%= f.password_field :password_confirmation %>
+<%= f.password_field :password_confirmation, hide_label: true %>
 <%= f.submit  %>
 <% end %>
+</div>
+</div>
