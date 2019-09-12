@@ -6,7 +6,7 @@
 <% end %>
 
 <div class="card-columns" style="display: inline-block;">
-<ul><% @pets.each do |pet| %>
+<% @pets.each do |pet| %>
 <div class="card" style="width: 22rem; margin: 5px;">
   <img class="card-img-top" src="<%= pet.pic_url %>"   alt="Pet Image">
   <div class="card-body">
@@ -15,6 +15,6 @@
     <a href="<%= pet_path(pet) %>" class="btn btn-primary">View Pet</a>
   </div>
 </div>
-  <%# <li><%= link_to pet.name, pet_path(pet) %></li>
-<% end %></ul>
+  <%# <li><%= link_to pet.name, pet_path(pet) %>
+<% end %>
 </div>
