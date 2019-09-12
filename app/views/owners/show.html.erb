@@ -1,14 +1,50 @@
-<h1>Dashboard</h1>
-<h1><%= @owner.name %></h1>
-<h2><%= @owner.location %></h2>
-<br>
-<h1>Pets</h1>
-<% @owner.pets.each do |pet| %>
-<h2><%= link_to pet.name, pet_path(pet) %></h2>
-<img src="<%= pet.pic_url %>" width="300">
-<% end %>
-<br>
 <% if @owner.id == session[:owner_id] %>
+<h1>Welcome Back, <%= @owner.name %>! </h1>
+<h1>Here are your pets:</h1>
+<% else %>
+<h1><%= @owner.name %>'s Pets</h2> 
+<% end %>
+
+<br>
+<div class="row">
+
+<div class="card-deck" style="float: left;">
+<% @owner.pets.each do |pet| %>
+<div class="card" style="width: 22rem; margin: 5px;">
+<img class="card-img-top" src="<%= pet.pic_url %>" alt="Pet Image" width="150" height="150">
+  <div class="card-body">
+    <h5 class="card-title"><%= pet.name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= pet.species.name %></h6>
+    <p class="card-text" style="margin-bottom: 50px;"><%= pet.breed %></p>
+    <a href="<%= pet_path(pet) %>" class="btn btn-primary" style="position: absolute; bottom: 10px;">View Profile</a>
+  </div>
+  </div>
+   <% end %>
+  </div>
+  <div>
+
+
+
+
+
+<% if @owner.id == session[:owner_id] %>
+<h2>Here are your upcoming appointment(s):</h2>
+<% if @owner.pets.map {|pet| pet.upcoming_appointments} == []%>
+<%= "You have no upcoming appointments" %>
+<% else  %>
+<% @owner.pets.each do |pet| %>
+    <% pet.upcoming_appointments.each do |appt| %>
+<%= "#{pet.name} has an appointment with #{appt.service_provider.company_name} on #{appt.date}" %> <br>
+<button> <%= link_to "View", appointment_path(appt) %></button> <br>
+    <% end %>
+    <% end %>
+    <% end %>
+<br>
+
+
+
+
+
 <%= link_to "Add a Pet", new_pet_path %>
 <%= link_to 'Delete Account', @owner, { method: 'delete', data: {confirm: 'Are you sure?'} } %>
 <% end %>
