@@ -1,12 +1,11 @@
 <% if @owner.id == session[:owner_id] %>
 <h1>Welcome to your Dashboard, <%= @owner.name %>! </h1>
-<a href="<%= new_pet_path %>" class="btn btn-primary">Add New Pet</a>
-<h1>Here are your pets:</h1>
+<a href="<%= new_pet_path %>" class="btn btn-primary">Add New Pet</a> 
+<h3 style="margin-top: 5px;">Here are your pets:</h3>
 <% else %>
-<h1><%= @owner.name %>'s Pets</h2> 
+<h3><%= @owner.name %>'s Pets</h3> 
 <% end %>
 
-<br>
 <div class="row">
 <div class="card-deck" style="float: left;">
 <% @owner.pets.each do |pet| %>
@@ -17,7 +16,7 @@
     <h5 class="card-title"><%= pet.name %></h5>
     <h6 class="card-subtitle mb-2 text-muted"><%= pet.species.name %></h6>
     <p class="card-text" style="margin-bottom: 50px;"><%= pet.breed %></p>
-    <a href="<%= pet_path(pet) %>" class="btn btn-primary" style="position: absolute; bottom: 50px;">View Profile</a>
+    <a href="<%= pet_path(pet) %>" class="btn btn-primary" style="position: absolute; bottom: 10px;">View Profile</a>
   </div>
   </div>
   </div>
@@ -26,18 +25,15 @@
   
 <div class="container">
 <% if @owner.id == session[:owner_id] %>
-<h2>Here are your upcoming appointment(s):</h2>
+<h3>Here are your upcoming appointment(s):</h3>
 <% if @owner.pets.map {|pet| pet.upcoming_appointments}.flatten == []%>
-<div class="row">
-<%= "You have no upcoming appointments" %>
-</div>
+<p><%= "You have no upcoming appointments" %></p>
 <% else  %>
 <% @owner.pets.each do |pet| %>
     <% pet.upcoming_appointments.each do |appt| %>
-    <div class="row">
-<%= "#{pet.name} has an appointment with #{appt.service_provider.company_name} on #{appt.date}" %> <br>
+<br><%= "#{pet.name} has an appointment with #{appt.service_provider.company_name} on #{appt.date}" %> <br>
 <a href="<%= appointment_path(appt) %>" class="btn btn-primary">View</a>
-    </div>  
+   
     <% end %>
     <% end %>
     <% end %>

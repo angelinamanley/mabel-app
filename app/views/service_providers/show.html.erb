@@ -1,24 +1,27 @@
-<h1>Show Service Providers</h1>
-
 <h1><%= @service_provider.company_name %></h1>
-<h2><%= @service_provider.location %></h2>
+<h3><%= @service_provider.location %></h3> 
+<p> Average Rating: <%= @service_provider.average_rating %> </p>
 
 
+
+<h5>Services offered</h5>
+
+<ul>
 <% @service_provider.service_types.each do |service_type| %>
-<%= service_type %> <br>
-<% end %>
-
-Average Rating: <%= @service_provider.average_rating %> <br>
-
-Bio: <%= @service_provider.bio %> <br>
-
-Rates: £ <%= number_with_precision(@service_provider.rates, precision: 2) %> <br>
+<li><%= service_type %></li>
+<% end %> </ul> 
 
 
-Email: <%= @service_provider.email %> <br>
+<p><strong>About Us</strong></p>
+<p><%= @service_provider.bio %> </p>
+
+<p><strong>Rates: £ </strong><%= number_with_precision(@service_provider.rates, precision: 2) %></p>
 
 
-<%= link_to "Book an appointment", new_appointment_path %>
+<p><strong>Email: </strong><%= @service_provider.email %></p> <br>
+
+<a href="<%= new_appointment_path %>" class="btn btn-primary">Book an Appointment</a>
+
 
 
 
