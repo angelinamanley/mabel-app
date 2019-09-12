@@ -2,6 +2,7 @@ class Pet < ApplicationRecord
   belongs_to :owner
   belongs_to :species
   has_many :appointments
+  mount_uploader :pic_url, ImageUploader
 
   validates :name, presence: true
   validates :gender, presence: true

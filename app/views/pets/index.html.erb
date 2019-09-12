@@ -1,7 +1,7 @@
 
 
 <%= form_tag(pets_path, method: :get) do %>
-<%= select_tag :species_id, options_from_collection_for_select(Species.all, :id, :name) %>
+<%= select_tag :search, options_from_collection_for_select(Species.all, :id, :name) %>
 <%= submit_tag ("Search") %>
 <% end %>
 

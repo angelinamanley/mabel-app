@@ -46,7 +46,7 @@ class AppointmentsController < ApplicationController
     def destroy
         @appointment = Appointment.find(params[:id])
         @appointment.destroy
-    redirect_to owner_path(@current_user)
+    redirect_to owner_path(@current_owner)
     end
 
     def review_form 
