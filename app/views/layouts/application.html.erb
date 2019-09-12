@@ -5,24 +5,46 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <nav>
-    <%= link_to 'Pets', pets_path %>
-     <%= link_to 'Find a Service Provider', service_providers_path %>
-<% if logged_in? %>
-    <%= link_to "Dashboard", owner_path(@current_owner)%>
-    <%= link_to 'Logout', logout_path %>
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= pets_path %>">Pets</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= service_providers_path %>">Find a Service Provider</a>
+      </li>
+      <% if logged_in? %>
+    <li class="nav-item">
+    <a class="nav-link" href="<%= owner_path(@current_owner)%>">Dashboard</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="<%= logout_path %>">Logout</a>
+    </li>
   <% else %>
-  <%= link_to "Signup", signup_path %>
-  <%= link_to 'Login', login_path %>
+  <li class="nav-item">
+  <a class="nav-link" href="<%= signup_path %>">Sign Up</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="<%= login_path %>">Login</a>
+  </li>
   <% end %>
-  </nav>
+    </ul>
+  </div>
+</nav>
+
+
   <% if flash[:errors] %>
-   <ul class=“errors”>
+   <ul class="errors">
      <h2>Woof!! Something's wrong!</h2>
      <% flash[:errors].each do |error| %>
        <li><%= error %></li>
@@ -30,12 +52,15 @@
    </ul>
  <% end %>
  <% if flash[:notices] %>
-   <ul class=“notices”>
+   <ul class="notices">
      <% flash[:notices].each do |notice| %>
        <li><%= notice %></li>
      <% end %>
    </ul>
  <% end %>
     <%= yield %>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

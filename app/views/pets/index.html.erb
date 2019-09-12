@@ -1,13 +1,20 @@
-
+<h1>All Pets</h1>
 
 <%= form_tag(pets_path, method: :get) do %>
 <%= select_tag :search, options_from_collection_for_select(Species.all, :id, :name) %>
 <%= submit_tag ("Search") %>
 <% end %>
 
-
-
-<h1>All Pets</h1>
+<div class="card-columns" style="display: inline-block;">
 <ul><% @pets.each do |pet| %>
-  <li><%= link_to pet.name, pet_path(pet) %></li>
+<div class="card" style="width: 22rem; margin: 5px;">
+  <img class="card-img-top" src="<%= pet.pic_url %>"   alt="Pet Image">
+  <div class="card-body">
+    <h5 class="card-title"><%= pet.name %></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="<%= pet_path(pet) %>" class="btn btn-primary">View Pet</a>
+  </div>
+</div>
+  <%# <li><%= link_to pet.name, pet_path(pet) %></li>
 <% end %></ul>
+</div>
