@@ -1,5 +1,5 @@
-<h1>Find a Service Provider</h1>
-<p>What service are you looking for?</p>
+<h1>Find a Pet Service</h1>
+<p>What are you looking for?</p>
 
 <%= form_tag(service_providers_path, method: :get) do %>
 <%= select_tag :search, options_from_collection_for_select(@service_types, :to_s, :to_s) %>

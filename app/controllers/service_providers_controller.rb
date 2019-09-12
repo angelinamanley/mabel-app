@@ -7,7 +7,7 @@ class ServiceProvidersController < ApplicationController
     end
 
     def index
-        @service_types = ['sitting', 'walking', 'grooming', 'training', 'healthcare']
+        @service_types = ServiceProvider.all.map{|sp| sp.service_types}.flatten.uniq
         @service_providers = ServiceProvider.search(params[:search])
     end
 

@@ -12,7 +12,7 @@ class Appointment < ApplicationRecord
 
 
   def is_within_a_year
-    if self.date > Date.today + 1.years
+    if self.date > DateTime.now + 1.years
       errors.add(:date, "must be in within a year of today.")
     end
   end

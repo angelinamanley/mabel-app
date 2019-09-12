@@ -7,11 +7,25 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+ <style>
+  body {
+    background-color: #f9f9f9; 
+    color: #031c63
+ 
+  }
+
+  </style>
+ 
+ 
+ 
   </head>
 
   <body>
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+ <nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #031c63;">
+    <a class=“navbar-brand” href=“#”>
+    <img src=“/docs/4.0/assets/brand/bootstrap-solid.svg” width="30" height=“30” class=“d-inline-block align-top” alt=“”>
+   Mabel
+ </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,7 +35,7 @@
         <a class="nav-link" href="<%= pets_path %>">Pets</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= service_providers_path %>">Find a Service Provider</a>
+        <a class="nav-link" href="<%= service_providers_path %>">Find a Pet Service</a>
       </li>
       <% if logged_in? %>
     <li class="nav-item">

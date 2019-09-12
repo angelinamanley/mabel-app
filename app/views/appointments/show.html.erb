@@ -1,11 +1,10 @@
-<h1>Show Appointment</h1>
+<h1> You've booked <%= @appointment.pet.name %>'s <%= @appointment.service_type %> Session!</h1>
 
-<h1>Service Type: <%= @appointment.service_type %></h1>
-<h2>Pet Name: <%= @appointment.pet.name %></h2>
-<h2>Service Provider Name:<%= @appointment.service_provider.company_name %></h2>
-<h2>Date: <%= @appointment.date %></h2>
-<h2>Duration: <%= @appointment.duration %></h2>
-<h2>Cost: <%= @appointment.duration * @appointment.service_provider.rates %></h2>
+<p><strong>Service Provider: </strong><%= @appointment.service_provider.company_name %></p>
+
+<p><strong>Date: </strong> <%= @appointment.date %></p>
+<p><strong>Cost: £ </strong> <%= @appointment.duration * @appointment.service_provider.rates %></p>
+
 <% if @appointment.date < DateTime.now %>
     <% if @appointment.review_score == nil || @appointment.review_score == "" %>
     <%= link_to "Review this appointment", review_form_path(@appointment.id) %>
@@ -14,8 +13,7 @@
 <h2> <%= "Review Content: #{@appointment.review_content}" %></h2>
     <% end %>
 <% else %>
+    <a href="<%= edit_appointment_path(@appointment) %>" class="btn btn-primary">Edit Appointment</a> <br>
     <%= link_to 'Cancel Appointment', @appointment, { method: 'delete', data: {confirm: 'Are you sure?'} } %>
-    <%= link_to 'Edit Appointment', edit_appointment_path(@appointment) %>
 <% end %>
 
-<br>
