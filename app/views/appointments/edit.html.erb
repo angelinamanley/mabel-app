@@ -1,9 +1,13 @@
-Edit your Appointment with <%= @appointment.service_provider.company_name %>
-<%= form_for @appointment do |f| %>
+<h2>Edit your Appointment with <%= @appointment.service_provider.company_name %></h2>
+<div class="text-center border border-light bg-light p-5 col-md-5">
+<%= bootstrap_form_for @appointment do |f| %>
 <%= f.hidden_field :service_provider_id, value: @appointment.service_provider.id %>
-Who's the appointment for? <%= f.collection_select :pet_id, @current_owner.pets, :id, :name %><br>
-What's the appointment for?<%= f.collection_select :service_type, @appointment.service_provider.service_types, :to_s, :to_s %><br>
-When is the appointment for?<%= f.datetime_field :date %><br>
-How long is the appointment for? <%= f.number_field :duration %> hours<br>
+<%= f.hidden_field :review_score, value: 3 %>
+<%= f.hidden_field :pet_id, value: @appointment.pet.id%>
+What's the appointment for?<%= f.collection_select :service_type, @appointment.service_provider.service_types, :to_s, :to_s, hide_label: true  %><br>
+When is the appointment for?<%= f.datetime_field :date, hide_label: true  %><br>
+How many hours is the appointment for? <%= f.number_field :duration, hide_label: true %> <br>
 <%= f.submit %>
 <% end %>
+</div>
+

@@ -34,8 +34,8 @@
 <%= "Appointment with #{appt.service_provider.company_name} on #{appt.date}" %> <br>
 <button> <%= link_to "View Appointment", appointment_path(appt) %></button> <br>
 <% end %>
-<% end %>
- <a href="<%= edit_pet_path(@pet) %>" class="btn btn-primary">Edit</a><br>
+<% end %> <br> <br>
+ <a href="<%= edit_pet_path(@pet) %>" class="btn btn-success">Edit Pet</a><br>
           <%= link_to 'Remove Pet', @pet, { method: 'delete', data: {confirm: 'Are you sure?'} } %>
 <% end %>
 

@@ -2,7 +2,7 @@
 
 <p><strong>Service Provider: </strong><%= @appointment.service_provider.company_name %></p>
 
-<p><strong>Date: </strong> <%= @appointment.date %></p>
+<p><strong>Date: </strong> <%= @appointment.date.strftime("%A, %B %-d %Y, at %H:%M") %></p>
 <p><strong>Cost: £ </strong> <%= @appointment.duration * @appointment.service_provider.rates %></p>
 
 <% if @appointment.date < DateTime.now %>
@@ -13,7 +13,7 @@
 <h2> <%= "Review Content: #{@appointment.review_content}" %></h2>
     <% end %>
 <% else %>
-    <a href="<%= edit_appointment_path(@appointment) %>" class="btn btn-primary">Edit Appointment</a> <br>
+    <a href="<%= edit_appointment_path(@appointment) %>" class="btn btn-success">Edit Appointment</a> <br>
     <%= link_to 'Cancel Appointment', @appointment, { method: 'delete', data: {confirm: 'Are you sure?'} } %>
 <% end %>
 
