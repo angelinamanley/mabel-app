@@ -10,6 +10,7 @@ class Pet < ApplicationRecord
   validates :species_id, presence: true
   validates :breed, presence: true
   validates :dob, presence: true
+  validates :pic_url, presence: true 
   validate :is_in_future
 
   def past_appointments 
