@@ -10,7 +10,7 @@
 <div class="card-deck" style="float: left;">
 <% @owner.pets.each do |pet| %>
 <div class="col-md-4">
-<div class="card" style="width: 18rem; margin: 5px;">
+<div class="card" style="width: 100%; margin: 5px;">
 <img class="card-img-top" src="<%= pet.pic_url %>" alt="Pet Image">
   <div class="card-body">
     <h5 class="card-title"><%= pet.name %></h5>
