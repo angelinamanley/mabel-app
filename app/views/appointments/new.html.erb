@@ -7,6 +7,6 @@ Who's the appointment for? <%= f.collection_select :pet_id, @current_owner.pets,
 What's the appointment for?<%= f.collection_select :service_type, @service_provider["service_types"], :to_s, :to_s, hide_label: true  %><br>
 When is the appointment for?<%= f.datetime_field :date, hide_label: true %><br>
 How many hours is the appointment for? <%= f.number_field :duration, hide_label: true  %> <br>
-<%= f.submit %>
+<%= f.submit %> 
 <% end %>
 </div>

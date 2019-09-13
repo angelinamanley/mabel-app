@@ -4,20 +4,17 @@
 <%= f.hidden_field :owner_id, value: session[:owner_id] %>
 <%= f.label :name %>
 <%= f.text_field :name , hide_label: true %>
-<%= f.label "Species:" %>
-<%= f.collection_select :species_id, Species.all, :id, :name, hide_label: true %><br>
+<%= f.label "Species" %>
+<%= f.collection_select :species_id, Species.all, :id, :name, hide_label: true %>
 <%= f.label :breed %>
 <%= f.text_field :breed, hide_label: true  %>
-<%= f.label "Date of Birth" %>
+<%= f.label "Birthday   " %>
 <%= f.date_field :dob, hide_label: true  %>
-<%= f.label :gender_male, "Male" %>
-<%= f.radio_button :gender, 'Male', hide_label: true %>
-<%= f.label :gender_female, "Female" %>
-<%= f.radio_button :gender, 'Female', hide_label: true %><br>
+<%= f.radio_button :gender, 'Male'%>
+<%= f.radio_button :gender, 'Female' %> <br>
 <%= f.label :bio %>
 <%= f.text_area :bio, hide_label: true  %>
 <%= f.label "Upload a picture of your pet" %>
 <%= f.file_field :pic_url, hide_label: true %>
-<br>
 <%= f.submit "Add New Pet" %>
 <% end %>
