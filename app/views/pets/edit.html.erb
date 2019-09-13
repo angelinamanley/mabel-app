@@ -10,8 +10,8 @@
 <%= f.text_field :breed, hide_label: true %>
 <%= f.label "Birthday" %>
 <%= f.date_field :dob, hide_label: true %>
-<%= f.radio_button :gender, 'Male', :checked => @pet.gender == "male" %>
-<%= f.radio_button :gender, 'Female', :checked => @pet.gender == "female"%><br>
+<%= f.radio_button :gender, 'Male', :checked => @pet.gender == "Male" %>
+<%= f.radio_button :gender, 'Female', :checked => @pet.gender == "Female"%><br>
 <%= f.label "Edit your Pet's bio" %>
 <%= f.text_area :bio, hide_label: true %><br>
 <%= f.label "Upload a picture of your pet" %>
