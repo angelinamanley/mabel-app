@@ -20,8 +20,10 @@
 
 <p><strong>Email: </strong><%= @service_provider.email %></p> <br>
 
-<a href="<%= new_appointment_path %>" class="btn btn-success">Book an Appointment</a>
 
+<% if logged_in? %>
+<a href="<%= new_appointment_path %>" class="btn btn-success">Book an Appointment</a>
+<% end %>
 
 
 
